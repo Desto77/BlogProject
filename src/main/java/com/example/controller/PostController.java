@@ -25,7 +25,7 @@ public class PostController {
     public String getAllPosts(Model model) {
     	List<Post> list = postService.findAll();
     	model.addAttribute("posts", list);
-    	return "posts/posts";
+    	return "posts/postsboard";
     }
 	
 	@RequestMapping("/posts/view/{id}")
@@ -36,7 +36,7 @@ public class PostController {
             return "redirect:/";
         }
         model.addAttribute("post", post);
-        return "posts/view";
+        return "posts/postdetails";
     }
 
 	

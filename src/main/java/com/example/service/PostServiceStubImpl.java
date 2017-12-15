@@ -30,8 +30,7 @@ public class PostServiceStubImpl implements PostService {
 
 	@Override
 	public Post findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return postRepository.findOne(id);
 	}
 
 	@Override
