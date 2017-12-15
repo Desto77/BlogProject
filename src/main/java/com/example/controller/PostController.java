@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,8 +23,8 @@ public class PostController {
 
 	@RequestMapping("/posts")
     public String getAllPosts(Model model) {
-    	List<Post> list = postService.findAll();
-    	model.addAttribute("posts", list);
+		Page<Post> page = postService.findPagable(new PageRequest(0, 2));
+		model.addAttribute("page", page);
     	return "posts/postsboard";
     }
 	
@@ -41,11 +39,10 @@ public class PostController {
         return "posts/postdetails";
     }
 	
-	@RequestMapping("/posts/page/{pageNo}")
+	@RequestMapping("/posts/{pageNo}")
 	public String getPage(@PathVariable("pageNo") int pageNo, Model model) {
 		Page<Post> page = postService.findPagable(new PageRequest(pageNo, 2));
 		model.addAttribute("page", page);
-		
 		return "posts/postsboard"; 
 	}
 	
