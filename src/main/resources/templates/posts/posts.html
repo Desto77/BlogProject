@@ -61,6 +61,7 @@
 					<div class="card-body">
 						<h2 class="card-title" th:text="${p.title}"></h2>
 						<p class="card-text" th:text="${p.subtitle}"></p>
+						<p class="card-text" th:text="${#strings.substring(p.text,0,200)} + '...'"></p>
 						<a href="#" th:href="@{/posts/view/{id}/(id=${p.id})}" class="btn btn-primary">Read More &rarr;</a>
 					</div>
 					<div class="card-footer text-muted">

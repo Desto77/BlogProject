@@ -18,26 +18,6 @@ public class PostServiceStubImpl implements PostService {
 	@Autowired
 	private PostRepository postRepository;
 
-	
-	
-	@PostConstruct
-	private void init() {
-		List<Post> posts = new ArrayList<Post>() {
-			{
-				add(new Post("First Post", "Line #1.Line #2", "dgdsa astr bfdsdsa rrr", null));
-				add(new Post("Second Post", "Second post content: line 1 line 2", "gfdsgfds redfas bhbxcds",
-						new User("pesho10", "Peter Ivanov")));
-				add(new Post("Post #3", "The post number 3 nice", "gfdsgfds redfas bhbxcds",
-						new User("merry", null)));
-				add(new Post("Forth Post", "Not interesting post", "gfdsgfds redfas bhbxcds",
-						new User("username", "Martin Kogl")));
-				add(new Post("Post Number 5", "Just postin", "gfdsgfds redfas bhbxcds", null));
-				add(new Post("Sixth Post", "Another interesting post", "gfdsgfds redfas bhbxcds", null));
-			}
-		};
-		postRepository.save(posts);
-	}
-
 	@Override
 	public List<Post> findAll() {
 		return postRepository.findAll();

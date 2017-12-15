@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,9 +24,10 @@ public class Post {
 	private String title;
 	@Column(name = "SUBTITLE")
 	private String subtitle;
-	@Column(name = "TEXT")
+	@Column(name = "TEXT", length = 1000)
 	private String text;
 	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "USER_ID")
 	private User user;
 	@Column(name = "DATE")
 	private Date date = new Date();

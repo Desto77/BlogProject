@@ -1,5 +1,6 @@
 package com.example.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,9 +13,13 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private Long id;
+	@Column(name = "USERNAME")
 	private String username;
+	@Column(name = "PASSWORD_HASH")
 	private String passwordHash;
+	@Column(name = "FULLNAME")
 	private String fullName;
 
 	public User() {
