@@ -54,7 +54,7 @@
 				</h1>
 
 				<!-- Blog Post -->
-				<div class="card mb-4" th:each="p : ${posts}">
+				<div class="card mb-4" th:each="p : ${page}">
 					<img class="card-img-top" src="http://placehold.it/750x300"
 						alt="Card image cap" />
 					<div class="card-body">
@@ -74,10 +74,8 @@
 
 				<!-- Pagination -->
 				<ul class="pagination justify-content-center mb-4">
-					<li class="page-item"><a class="page-link" href="#">&larr;
-							Older</a></li>
-					<li class="page-item disabled"><a class="page-link" href="#">Newer
-							&rarr;</a></li>
+					<li class="page-item" th:classappend="${page.hasPrevious()} ? '' : 'disabled'"><a class="page-link" th:href="${page.getNumber() - 1}">&larr; Newer</a></li>
+					<li class="page-item" th:classappend="${page.hasNext()} ? '' : 'disabled'"><a class="page-link" th:href="${page.getNumber() + 1}">Older &rarr;</a></li>
 				</ul>
 
 			</div>

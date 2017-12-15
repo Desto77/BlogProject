@@ -1,15 +1,13 @@
 package com.example.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.model.Post;
-import com.example.model.User;
 import com.example.repository.PostRepository;
 
 @Service
@@ -17,7 +15,12 @@ public class PostServiceStubImpl implements PostService {
 
 	@Autowired
 	private PostRepository postRepository;
-
+	
+	@Override
+	public Page<Post> findPagable(Pageable pageable) {
+		return postRepository.findAllByOrderByDateDesc(pageable);
+	}
+	
 	@Override
 	public List<Post> findAll() {
 		return postRepository.findAll();
@@ -50,6 +53,8 @@ public class PostServiceStubImpl implements PostService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 //	@Override
 //	public Post findById(Long id) {

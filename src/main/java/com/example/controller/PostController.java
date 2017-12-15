@@ -3,6 +3,8 @@ package com.example.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +40,15 @@ public class PostController {
         model.addAttribute("post", post);
         return "posts/postdetails";
     }
+	
+	@RequestMapping("/posts/page/{pageNo}")
+	public String getPage(@PathVariable("pageNo") int pageNo, Model model) {
+		Page<Post> page = postService.findPagable(new PageRequest(pageNo, 2));
+		model.addAttribute("page", page);
+		
+		return "posts/postsboard"; 
+	}
+	
 
 	
 }
